@@ -27,6 +27,7 @@ $page = $result->fetch_assoc();
     </div>  
     
     <a href="/">index</a>
+    <a href="edit-page.php?id=<?= $id ?>">Edit</a>
   </body>
 
 

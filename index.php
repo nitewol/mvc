@@ -39,6 +39,7 @@ while($row = $result->fetch_assoc()){
   <?php foreach($pages as $page):?>
   <li><?= $page['title'] ?>
   <a href="page.php?id=<?= $page['id']?>">View</a>
+    <a href="edit-page.php?id=<?= $page['id']?>">Edit</a>  
   <a href="/?delete-page=<?= $page['id']?>">Delete</a>
   
   </li>
