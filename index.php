@@ -7,6 +7,11 @@ if(isset($_GET['create-new'])){
   header("Location: /");
 }
 
+if(isset($_GET['delete-page'])){
+  $pageid = $_GET['delete-page'];
+  $mysqli->query("delete from pages where id = $pageid");
+}
+
 $result = $mysqli->query("select * from pages");
 
 $pages = array();
@@ -34,6 +39,7 @@ while($row = $result->fetch_assoc()){
   <?php foreach($pages as $page):?>
   <li><?= $page['title'] ?>
   <a href="page.php?id=<?= $page['id']?>">View</a>
+  <a href="/?delete-page=<?= $page['id']?>">Delete</a>
   
   </li>
   
