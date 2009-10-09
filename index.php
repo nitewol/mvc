@@ -25,7 +25,10 @@ while($row = $result->fetch_assoc()){
   
   <ul>
   <?php foreach($pages as $page):?>
-  <li><?= $page['title'] ?></li>
+  <li><?= $page['title'] ?>
+  <a href="page.php?id=<?= $page['id']?>">View</a>
+  
+  </li>
   
   <?php endforeach ?>
   
