@@ -1,23 +1,21 @@
 <?php
 
-$mysqli = new MySQLi("localhost","sonya","sonyasmith","sonya");
+require 'pagemapper.php';
+
+$pm = new PageMapper();
 
 if(isset($_GET['create-new'])){
-  $mysqli->query("insert into pages (title, body) values ('new title','new body')");
+  $pm->insert();
   header("Location: /");
 }
 
 if(isset($_GET['delete-page'])){
   $pageid = $_GET['delete-page'];
-  $mysqli->query("delete from pages where id = $pageid");
+  $pm->delete($pageid);
 }
 
-$result = $mysqli->query("select * from pages");
 
-$pages = array();
-while($row = $result->fetch_assoc()){
-  $pages[] = $row;
-}
+$pages = $pm->find_all();
 
 ?>
 

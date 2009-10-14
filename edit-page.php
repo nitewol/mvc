@@ -1,17 +1,16 @@
 <?php
 
-$mysqli = new MySQLi("localhost","sonya","sonyasmith","sonya");
+require 'pagemapper.php';
 $id = $_GET['id'];
+$pm = new PageMapper();
 
 if(isset($_POST['submit'])){
-  $title = $_POST['title'];
-  $body = $_POST['body'];
-  $mysqli->query("update pages set title = '$title', body = '$body' where id = $id");
+  $pm->update($_POST);
   header("Location: page.php?id=$id");
 }
 
-$result = $mysqli->query("select * from pages where id = $id");
-$page = $result->fetch_assoc();
+
+$page = $pm->find($id);
 
 
 
@@ -40,6 +39,7 @@ $page = $result->fetch_assoc();
   <label>Body</label><br />
   <textarea name="body"><?= $page['body']?></textarea>
   
+  <input type="hidden" name="id" value="<?= $page['id']?>" />
   <input type="submit" name="submit" value="Update">
   </form>
   

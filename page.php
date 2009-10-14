@@ -1,9 +1,10 @@
 <?php
 
-$mysqli = new MySQLi("localhost","sonya","sonyasmith","sonya");
-$id = $_GET['id'];
-$result = $mysqli->query("select * from pages where id = $id");
-$page = $result->fetch_assoc();
+
+require 'pagemapper.php';
+$pm = new PageMapper();
+$page = $pm->find($_GET['id']);
+
 
 ?>
 
