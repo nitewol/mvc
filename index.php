@@ -1,62 +1,31 @@
 <?php
 
-require 'pagemapper.php';
-
-$pm = new PageMapper();
-
-if(isset($_GET['create-new'])){
-  $pm->insert();
-  header("Location: /");
+function __autoload($class){
+  require 'php/'.strtolower($class).'.php';
 }
 
-if(isset($_GET['delete-page'])){
-  $pageid = $_GET['delete-page'];
-  $pm->delete($pageid);
-}
+$req = Request::instance();
+$uri =  $req->get_uri();
+$controllerclass = '';
+$explodeduri = explode('/',$uri);
+$controllerclass = $explodeduri[1];
+$controllerclass = ucwords($controllerclass) . 'Controller';
 
 
-$pages = $pm->find_all();
+echo $controllerclass;
+$action = explode('?',$explodeduri[2]);
+$action = $action[0];
+
+echo "::$action";
+
+
+
+$controller = new $controllerclass();
+$controller->$action();
+
 
 ?>
 
-<html>
-
-  <head>
-    <title> List pages  </title>
-    
-  
-  </head>
-  
-  <body>
-  
-  <h1>List pages</h1>
-  
-  <a href="/?create-new=1">Create new page</a>
-  
-  <ul>
-  <?php foreach($pages as $page):?>
-  <li><?= $page['title'] ?>
-  <a href="page.php?id=<?= $page['id']?>">View</a>
-    <a href="edit-page.php?id=<?= $page['id']?>">Edit</a>  
-  <a href="/?delete-page=<?= $page['id']?>">Delete</a>
-  
-  </li>
-  
-  <?php endforeach ?>
-  
-  
-  
-  
-  </ul>
-  
-  
-  
-  
-  
-  
-  </body>
+<h1>Hello world!</h1>
 
 
-
-
-</html>

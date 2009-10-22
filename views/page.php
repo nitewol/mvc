@@ -1,12 +1,3 @@
-<?php
-
-
-require 'pagemapper.php';
-$pm = new PageMapper();
-$page = $pm->find($_GET['id']);
-
-
-?>
 
 <html>
 
