@@ -12,11 +12,11 @@ $controllerclass = $explodeduri[1];
 $controllerclass = ucwords($controllerclass) . 'Controller';
 
 
-echo $controllerclass;
+//echo $controllerclass;
 $action = explode('?',$explodeduri[2]);
 $action = $action[0];
 
-echo "::$action";
+//echo "::$action";
 
 
 
@@ -26,6 +26,6 @@ $controller->$action();
 
 ?>
 
-<h1>Hello world!</h1>
+
 
 

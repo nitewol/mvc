@@ -1,18 +1,12 @@
 <?php
 
-require 'pagemapper.php';
-$id = $_GET['id'];
-$pm = new PageMapper();
 
+/*
 if(isset($_POST['submit'])){
   $pm->update($_POST);
   header("Location: page.php?id=$id");
 }
-
-
-$page = $pm->find($id);
-
-
+*/
 
 ?>
 
@@ -28,11 +22,11 @@ $page = $pm->find($id);
   
   <h1>Edit page <?= $page['title']?> </h1>
   
-  <a href="/">Index</a>
+  <a href="/pages/index">Index</a>
   
-  <a href="page.php?id=<?= $page['id']?>">View</a>
+  <a href="/pages/show?id=<?= $page['id']?>">View</a>
   
-  <form method="post" action="edit-page.php?id=<?= $page['id'] ?>">
+  <form method="post" action="/pages/edit?id=<?= $page['id'] ?>">
   <label>Title</label><br />
   <input type="text" name="title" value="<?= $page['title']?>" />
   

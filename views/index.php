@@ -31,14 +31,14 @@ if(isset($_GET['delete-page'])){
   
   <h1>List pages</h1>
   
-  <a href="/?create-new=1">Create new page</a>
+  <a href="/pages/create">Create new page</a>
   
   <ul>
   <?php foreach($pages as $page):?>
   <li><?= $page['title'] ?>
-  <a href="page.php?id=<?= $page['id']?>">View</a>
-    <a href="edit-page.php?id=<?= $page['id']?>">Edit</a>  
-  <a href="/?delete-page=<?= $page['id']?>">Delete</a>
+  <a href="/pages/show?id=<?= $page['id']?>">View</a>
+    <a href="/pages/edit?id=<?= $page['id']?>">Edit</a>  
+  <a href="/pages/delete?id=<?= $page['id']?>">Delete</a>
   
   </li>
   

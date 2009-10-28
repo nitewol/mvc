@@ -18,8 +18,8 @@
     
     </div>  
     
-    <a href="/">index</a>
-    <a href="edit-page.php?id=<?= $id ?>">Edit</a>
+    <a href="/pages/index">index</a>
+    <a href="/pages/edit?id=<?=$page['id'] ?>">Edit</a>
   </body>
 
 
