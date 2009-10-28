@@ -1,8 +1,8 @@
 <?php
 
-require 'pagemapper.php';
 
-$pm = new PageMapper();
+
+/*
 
 if(isset($_GET['create-new'])){
   $pm->insert();
@@ -15,7 +15,7 @@ if(isset($_GET['delete-page'])){
 }
 
 
-$pages = $pm->find_all();
+*/
 
 ?>
 
