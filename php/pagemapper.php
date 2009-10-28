@@ -5,9 +5,7 @@ class PageMapper{
   public $mysqli;
 
   function __construct(){
-  
     $this->mysqli = new MySQLi("localhost","sonya","sonyasmith","sonya");
-    
   }
 
   private function query($sql){
