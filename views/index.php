@@ -1,38 +1,12 @@
-<?php
-
-
-
-/*
-
-if(isset($_GET['create-new'])){
-  $pm->insert();
-  header("Location: /");
-}
-
-if(isset($_GET['delete-page'])){
-  $pageid = $_GET['delete-page'];
-  $pm->delete($pageid);
-}
-
-
-*/
-
-?>
-
 <html>
-
   <head>
     <title> List pages  </title>
-    
-  
+    <link rel='stylesheet' type='text/css' href='/css/style.css' />    
   </head>
-  
   <body>
-  
+  <div id='wrapper'>
   <h1>List pages</h1>
-  
   <a href="/pages/create">Create new page</a>
-  
   <ul>
   <?php foreach($pages as $page):?>
   <li><?= $page['title'] ?>
@@ -41,22 +15,9 @@ if(isset($_GET['delete-page'])){
   <a href="/pages/delete?id=<?= $page['id']?>">Delete</a>
   
   </li>
-  
   <?php endforeach ?>
-  
-  
-  
-  
   </ul>
-  
-  
-  
-  
-  
-  
+  </div>
   </body>
-
-
-
 
 </html>
