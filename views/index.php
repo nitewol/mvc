@@ -1,10 +1,5 @@
-<html>
-  <head>
-    <title> List pages  </title>
-  </head>
-  <body>
-  <div id='wrapper'>
-  <h1>List pages</h1>
+
+  <h2>List pages</h2>
   <a href="/pages/create">Create new page</a>
   <ul>
   <?php foreach($pages as $page):?>
@@ -16,7 +11,4 @@
   </li>
   <?php endforeach ?>
   </ul>
-  </div>
-  </body>
-
-</html>
+ 

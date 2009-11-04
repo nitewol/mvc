@@ -9,17 +9,29 @@ class PagesController {
     $this->page_mapper = new PageMapper();
   }
 
+  function render($view,$array){
+    extract($array);
+    $helper = new Helper();
+    $view = "views/$view.php";
+    include 'views/layout_page.php';
+  }
+
   function show(){
     $pm = $this->page_mapper;
     $id = Request::instance()->get_param('id');
-    $page = $pm->find( $id );
-    include 'views/page.php';
+    $data = array(
+      'id' => Request::instance()->get_param('id'),
+      'page' => $pm->find( $id )
+    );  
+    $this->render('page', $data);
   }
   
   function index(){
     $pm = $this->page_mapper;
-    $pages = $pm->find_all();
-    include 'views/index.php';
+    $data = array(
+     'pages' => $pm->find_all(),
+    );
+    $this->render('index', $data);
   }
   
   function edit(){
@@ -29,8 +41,10 @@ class PagesController {
       $id = Request::instance()->get_param('id');
       header("Location: /pages/show?id=$id");
      }
-    $page = $this->page_mapper->find( Request::instance()->get_param('id'));
-    include 'views/edit-page.php';
+     
+    $data = array( 'page' => $this->page_mapper->find( Request::instance()->get_param('id')) );
+    $this->render('edit-page', $data);
+
   
   }
   

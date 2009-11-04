@@ -1,13 +1,5 @@
-<html>
 
-  <head>
-    <title>Edit page <?= $page['title']?>  </title>
-  </head>
-
-  <body>
-  <div id='wrapper'>
-  
-    <h1>Edit page <?= $page['title']?> </h1>
+    <h2>Edit page <?= $page['title']?> </h2>
   
     <a href="/pages/index">Index</a>
     <a href="/pages/show?id=<?= $page['id']?>">View</a>
@@ -20,7 +12,4 @@
       <input type="hidden" name="id" value="<?= $page['id']?>" />
       <input type="submit" name="submit" value="Update">
     </form>
-    
-  </div>
-  </body>
-</html>
+  
