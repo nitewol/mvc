@@ -1,10 +1,10 @@
 
     <h2>Edit page <?= $page['title']?> </h2>
   
-    <a href="/pages/index">Index</a>
-    <a href="/pages/show?id=<?= $page['id']?>">View</a>
+    <a href="<?= $path_prefix ?>/pages/index">Index</a>
+    <a href="<?= $path_prefix ?>/pages/show?id=<?= $page['id']?>">View</a>
   
-    <form method="post" action="/pages/edit?id=<?= $page['id'] ?>">
+    <form method="post" action="<?= $path_prefix ?>/pages/edit?id=<?= $page['id'] ?>">
       <label>Title</label><br />
       <input type="text" name="title" value="<?= $page['title']?>" />
       <label>Body</label><br />

@@ -2,6 +2,6 @@
     <div id="page_content">
       <?= $page['body'] ?>
     </div>  
-    <a href="/pages/index">index</a>
-    <a href="/pages/edit?id=<?=$page['id'] ?>">Edit</a>
+    <a href="<?= $path_prefix ?>/pages/index">index</a>
+    <a href="<?= $path_prefix ?>/pages/edit?id=<?=$page['id'] ?>">Edit</a>
     

@@ -11,6 +11,7 @@
   <? $helper->render_partial('header'); ?>
   
   <? include $view; ?>
+  
   <? $helper->render_partial('footer'); ?>
   </div>
 

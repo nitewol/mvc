@@ -3,16 +3,20 @@
 class PagesController {
   
   private $page_mapper;
+
+  private $path_prefix;
   
   function __construct(){
   
     $this->page_mapper = new PageMapper();
+    $this->path_prefix = Config::instance()->path_prefix();
   }
 
   function render($view,$array){
     extract($array);
     $helper = new Helper();
     $view = "views/$view.php";
+    $path_prefix = $this->path_prefix;
     include 'views/layout_page.php';
   }
 
@@ -47,8 +51,7 @@ class PagesController {
 
   
   }
-  
-  
+    
   function delete(){
     $pm = $this->page_mapper;
     $id = Request::instance()->get_param('id');

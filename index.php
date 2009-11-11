@@ -18,7 +18,7 @@ $action = $action[0];
 
 //echo "::$action";
 
-
+Config::instance( 'config.ini' );
 
 $controller = new $controllerclass();
 $controller->$action();
