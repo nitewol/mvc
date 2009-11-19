@@ -33,18 +33,58 @@ abstract class Mapper {
    * TODO: Finish this function! 
    * @param $row array - the row to insert. It is an assoc array.
    */
-  /*  
-  function insert($row){
+
+  function insert($row = array()){
     $fields = $this->fields_without_id();
     $clean_row = $this->escape_array($row);
     $quoted_row = $this->quote_array($clean_row);
      
     $query = "insert into {$this->tablename()} ";
     $query .= '( ' . implode(',', $fields) .')' ;
-    $query .= "values ( " . implode(',', array_values($quoted_row));
+    //$query .= "values ( " . implode(',', array_values($quoted_row));
     // string glue, array pieces : implode()
+    
+    $query .= " values ( ";
+    foreach( $fields as $field ){
+      $query .= "'". $clean_row[$field] . "', ";
+    }
+    
+    $query = chop($query);
+    $query = substr( $query, 0, strlen( $query ) - 1 );
+    $query .= ' )';
+    
+    $this->query($query);
+  
   }
-  */
+  
+  function extract_fields_from_array($array){
+    $return = array();
+    $fields = $this->fields;
+    
+    foreach($fields as $field){
+      $return[$field] = $array[$field];
+    }
+  return $return;
+  
+  }
+  
+  function update($row){
+    $row = $this-> extract_fields_from_array($row);
+    $clean_row = $this->escape_array($row);
+    $quoted_row = $this->quote_array($clean_row);
+  
+    $query = "update {$this->tablename()} set ";
+    foreach ($quoted_row as $field => $value){
+      $query .= $field .'='. $value .', ';
+    }
+    $query = chop($query);
+    $query = substr( $query, 0, strlen( $query ) - 1 );
+    $query .= " where id = " . $quoted_row['id'];
+    $query .= " limit 1";
+    $this->query($query);
+   // echo $query;
+  }
+
   
   /**
    * Returns fields without the id 

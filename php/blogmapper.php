@@ -1,6 +1,13 @@
 <?php
 
-class BlogMapper {
+class BlogMapper extends Mapper {
+  
+  function tablename(){
+    return 'blogs';
+  
+  }
+
+
 }
 
 ?>
