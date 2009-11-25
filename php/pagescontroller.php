@@ -53,7 +53,13 @@ class PagesController extends Controller {
   function create(){
     $pm = $this->page_mapper;
     $pm->insert();
-    header("Location: /pages/index");
+    if (Request::instance()->is_ajax()) {
+      $data = array( 'new_page_id' => $pm->insert_id() );
+      $json = json_encode($data);
+      echo $json;
+     } else {
+      header("Location: /pages/index");
+    }
   }
   
 }

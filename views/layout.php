@@ -4,7 +4,7 @@
   <head>
     <title><?= $page['title'] ?></title>
     <?= $helper->style_sheet_link_tag(array('style','typography')) ?>
-    <?= $helper->javascript_include_tag('jquery')?>
+    <?= $helper->javascript_include_tag(array('jquery', 'effects.core', 'effects.highlight', 'application'))?>
   </head>
   
   <body>

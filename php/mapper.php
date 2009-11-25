@@ -57,6 +57,10 @@ abstract class Mapper {
   
   }
   
+  function insert_id(){
+    return $this->mysqli->insert_id;
+  }
+  
   function extract_fields_from_array($array){
     $return = array();
     $fields = $this->fields;
