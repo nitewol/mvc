@@ -24,7 +24,7 @@ class PagesController extends Controller {
     );  
     $this->render('page', $data);
   }
-  
+
   function index(){
     $pm = $this->page_mapper;
     $data = array(
@@ -34,7 +34,6 @@ class PagesController extends Controller {
   }
   
   function edit(){
-    
     if(Request::instance()->get_param('submit')!== null){
       $this->page_mapper->update(Request::instance()->get_params());
       $id = Request::instance()->get_param('id');
@@ -43,8 +42,6 @@ class PagesController extends Controller {
      
     $data = array( 'page' => $this->page_mapper->find( Request::instance()->get_param('id')) );
     $this->render('edit-page', $data);
-
-  
   }
     
   function delete(){

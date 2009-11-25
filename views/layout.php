@@ -8,11 +8,11 @@
   
   <body>
   <div id='wrapper'>
-  <? $helper->render_partial('header'); ?>
+  <?php $helper->render_partial('header'); ?>
   
-  <? include $view; ?>
+  <?php include $view; ?>
   
-  <? $helper->render_partial('footer'); ?>
+  <?php $helper->render_partial('footer'); ?>
   </div>
 
   </body>
