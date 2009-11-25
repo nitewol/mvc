@@ -3,7 +3,8 @@
 
   <head>
     <title><?= $page['title'] ?></title>
-    <?=$helper->style_sheet_link_tag(array('style','typography')) ?>
+    <?= $helper->style_sheet_link_tag(array('style','typography')) ?>
+    <?= $helper->javascript_include_tag('jquery')?>
   </head>
   
   <body>

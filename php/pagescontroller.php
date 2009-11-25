@@ -13,7 +13,6 @@ class PagesController extends Controller {
   function template_dir(){
     return 'pages';  
   }
-  
 
   function show(){
     $pm = $this->page_mapper;

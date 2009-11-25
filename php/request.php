@@ -1,6 +1,5 @@
 <?php
 
-
 class Request {
 
   private $method;
