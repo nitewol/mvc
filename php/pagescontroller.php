@@ -13,17 +13,26 @@ class PagesController extends Controller {
   function template_dir(){
     return 'pages';  
   }
-
+ /**
+  * Get pages/show/
+  *
+  * Shows a page
+  */
   function show(){
     $pm = $this->page_mapper;
     $id = Request::instance()->get_param('id');
-    $data = array(
+    $array = array(
       'id' => Request::instance()->get_param('id'),
       'page' => $pm->find( $id )
     );  
-    $this->render('page', $data);
+    $this->render('page', $array);
   }
 
+  /**
+   * Get pages/index/
+   *
+   * Lists pages (entries)
+   */
   function index(){
     $pm = $this->page_mapper;
     $data = array(
@@ -31,7 +40,11 @@ class PagesController extends Controller {
     );
     $this->render('index', $data);
   }
-  
+  /**
+   * Get | Post pages/edit?id=
+   * 
+   * Shows page for editing or  submits depending if submit is set.
+   */
   function edit(){
     if(Request::instance()->get_param('submit')!== null){
       $this->page_mapper->update(Request::instance()->get_params());
@@ -42,14 +55,22 @@ class PagesController extends Controller {
     $data = array( 'page' => $this->page_mapper->find( Request::instance()->get_param('id')) );
     $this->render('edit-page', $data);
   }
-    
+   /**
+    * Get pages/delete?id=
+    *
+    * Deletes page
+    */
   function delete(){
     $pm = $this->page_mapper;
     $id = Request::instance()->get_param('id');
     $pm->delete( $id );
     header("Location: /pages/index");
   }
-  
+   /**
+    * Get pages/delete?id=
+    *
+    * Deletes page
+    */
   function create(){
     $pm = $this->page_mapper;
     $pm->insert();
