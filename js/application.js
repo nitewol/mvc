@@ -11,7 +11,7 @@ $(function(){
        $('#pages_list').append(
         '<li id="page_'+new_page_id+'"><a href="/pages/show?id='+new_page_id+'">View</a> <a href="/pages/edit?id='+new_page_id+'">Edit</a> <a href="/pages/delete?id='+new_page_id+'">Delete</a></li>' 
        );
-       alert(' '+new_page_id);
+    
        $("#page_"+new_page_id).effect("highlight", {}, 3000);
 
     }, 'json');
