@@ -67,9 +67,9 @@ class PagesController extends Controller {
     header("Location: /pages/index");
   }
    /**
-    * Get pages/delete?id=
+    * Get pages/create/
     *
-    * Deletes page
+    * Creates a new page
     */
   function create(){
     $pm = $this->page_mapper;
