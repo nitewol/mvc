@@ -3,21 +3,8 @@
     private $data = array();
     private static $instance;
     
-    private function __construct( $array ) {
-      $this->data = $array;
-    }
-    
-    /**
-     * Initializes if unset + returns an instance
-     *
-     * @param $ini_filename string - the filename of the config file to read
-     * @return $config Config - the instance of content to return
-     */
-    static function instance( $ini_filename = null ) {
-      if ( (! isset(self::$instance) ) && $ini_filename !== null ) {
-        self::$instance = new self( parse_ini_file( $ini_filename ) );
-      }
-      return self::$instance;
+    function __construct() {
+      $this->data = parse_ini_file('config.ini');
     }
     
     /**

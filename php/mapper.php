@@ -12,7 +12,7 @@ abstract class Mapper {
   
   
   function __construct(){
-    $config = Config::instance();
+    $config = Registry::get('Config');
     $this->mysqli = new MySQLi(
       $config->db_host(),
       $config->db_user(),

@@ -6,11 +6,15 @@
  * 
  * @param $class string the class name
  */
-function __autoload($class){
+function sonya_cms_autoload($class){
   require 'php/'.strtolower($class).'.php';
 }
 
-Dispatcher::instance()->dispatch();
+spl_autoload_register('sonya_cms_autoload');
+
+Registry::get('Dispatcher')->dispatch();
+
+
 
 ?>
 

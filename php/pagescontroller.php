@@ -20,9 +20,9 @@ class PagesController extends Controller {
   */
   function show(){
     $pm = $this->page_mapper;
-    $id = Request::instance()->get_param('id');
+    $id = Registry::get('Request')->get_param('id');
     $array = array(
-      'id' => Request::instance()->get_param('id'),
+      'id' => Registry::get('Request')->get_param('id'),
       'page' => $pm->find( $id )
     );  
     $this->render('page', $array);
@@ -46,13 +46,13 @@ class PagesController extends Controller {
    * Shows page for editing or  submits depending if submit is set.
    */
   function edit(){
-    if(Request::instance()->get_param('submit')!== null){
-      $this->page_mapper->update(Request::instance()->get_params());
-      $id = Request::instance()->get_param('id');
+    if(Registry::get('Request')->get_param('submit')!== null){
+      $this->page_mapper->update(Registry::get('Request')->get_params());
+      $id = Registry::get('Request')->get_param('id');
       header("Location: /pages/show?id=$id");
      }
      
-    $data = array( 'page' => $this->page_mapper->find( Request::instance()->get_param('id')) );
+    $data = array( 'page' => $this->page_mapper->find( Registry::get('Request')->get_param('id')) );
     $this->render('edit-page', $data);
   }
    /**
@@ -62,7 +62,7 @@ class PagesController extends Controller {
     */
   function delete(){
     $pm = $this->page_mapper;
-    $id = Request::instance()->get_param('id');
+    $id = Registry::get('Request')->get_param('id');
     $pm->delete( $id );
     header("Location: /pages/index");
   }
@@ -74,7 +74,7 @@ class PagesController extends Controller {
   function create(){
     $pm = $this->page_mapper;
     $pm->insert();
-    if (Request::instance()->is_ajax()) {
+    if (Registry::get('Request')->is_ajax()) {
       $data = array( 'new_page_id' => $pm->insert_id() );
       $json = json_encode($data);
       echo $json;

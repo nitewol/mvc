@@ -10,7 +10,7 @@ abstract class Controller {
   abstract function template_dir();
 
   function __construct(){
-      $this->path_prefix = Config::instance()->path_prefix();
+      $this->path_prefix = Registry::get('Config')->path_prefix();
   }
  /**
   * Builds pages from fragments

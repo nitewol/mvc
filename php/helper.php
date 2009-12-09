@@ -4,7 +4,7 @@ class Helper {
   private $config;
   
   function __construct() {
-    $this->config = Config::instance();
+    $this->config = Registry::get('Config');
   }
   
   function style_sheet_link_tag($array){

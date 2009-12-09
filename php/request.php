@@ -10,25 +10,11 @@ class Request {
   private $params;
   private $fields = array('method','uri','params');
   
-  /**
-   * Provides singleton access to this class.
-   *
-   * Creates one(if needed) and returns instance.
-   * (Constructor is PRIVATE; only this method can instantiate this class)
-   */
-  static function instance(){
-    if(! isset(self::$instance)){
-      self::$instance = new Request();
-    }
-    return self::$instance;
-  }
-  
-  private static $instance;
   
   /**
    * Instantiates variables about the request.
    */
-  private function  __construct(){
+  function  __construct(){
   
     $this->uri = $_SERVER['REQUEST_URI'];
     $this->method = $_['REQUEST_METHOD'];

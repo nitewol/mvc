@@ -1,18 +1,11 @@
 <?php
 
   class Router{
-
-    private $request;
-    
-    function __construct(Request $request) {
-      
-      $this->request = $request;
-    }
-  
+ 
     function route(){
   
       // gets the uri part of the req (to examine it below)
-      $uri =  $this->request->get_uri();
+      $uri =  Registry::get('Request')->get_uri();
 
       //  chunk uri into bits to get controller name (assumed 2nd bit of uri).
       $controller = '';
@@ -35,8 +28,4 @@
   
   
   }
-
-
-?>
-
-
+  

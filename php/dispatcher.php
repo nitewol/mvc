@@ -2,29 +2,8 @@
 
 class Dispatcher {
 
-  private static $instance;
+   function dispatch(){
   
-  static function instance(){
-    if(! isset(self::$instance)){
-     self::$instance = new Dispatcher();
-    }
-
-    return self::$instance;
-  }
-
-
-  private function __construct(){
-
-
-  }
-
-
-
-  function dispatch(){
-  
-    // loads config file into config singleton (per-computer db access etc)
-    Config::instance( 'config.ini' );
-
     $router = new Router(Request::instance());
     $array  = $router->route();
     extract($array);
