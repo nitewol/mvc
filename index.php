@@ -12,8 +12,6 @@ function __autoload($class){
 
 Dispatcher::instance()->dispatch();
 
-
-
 ?>
 
 
