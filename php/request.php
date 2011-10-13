@@ -17,7 +17,7 @@ class Request {
   function  __construct(){
   
     $this->uri = $_SERVER['REQUEST_URI'];
-    $this->method = $_['REQUEST_METHOD'];
+    $this->method = $_SERVER['REQUEST_METHOD'];
     $this->params = $_REQUEST;
   }
   
